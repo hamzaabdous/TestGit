@@ -35,7 +35,7 @@ export const Home = ({navigation}) => {
           <TextInput
             style={GlobalStyles.input}
             onChangeText={setName}
-            placeholder='get number'
+            placeholder="get number"
           />
         </View>
         <View
