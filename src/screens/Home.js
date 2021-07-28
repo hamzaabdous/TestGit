@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, View, Button} from 'react-native';
+import {SafeAreaView, View, Button, Text, TextInput} from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {MyFlatList} from '../../resources/Components/MyFlatList';
 import {Header} from '../../resources/Components/Header';
@@ -7,7 +7,7 @@ import {Favoris} from './Favoris';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Home = ({navigation}) => {
-  const [name, setName] = useState('hamza');
+  const [name, setName] = useState('');
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('username', name);
@@ -31,9 +31,24 @@ export const Home = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
+          <Text>hamza</Text>
+          <TextInput
+            style={GlobalStyles.input}
+            onChangeText={setName}
+            placeholder='get number'
+          />
+        </View>
+        <View
+          style={{
+            backgroundColor: 'gold',
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <MyFlatList />
         </View>
-        <View style={{backgroundColor: 'green', flex: 0.2}}>
+
+        <View style={{backgroundColor: 'green', flex: 0.3}}>
           <Button title="Favoris" onPress={storeData} />
         </View>
       </View>

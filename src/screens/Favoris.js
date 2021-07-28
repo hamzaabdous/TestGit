@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -15,12 +15,14 @@ import {GlobalStyles} from '../../styles/Globalstyle';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Favoris = ({navigation, route}) => {
+  const [state, setstate] = useState('');
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem(route.params.keyAsync);
       if (value !== null) {
         // value previously stored
         console.log(value);
+        setstate(value);
       }
     } catch (e) {
       // error reading value
@@ -42,11 +44,11 @@ export const Favoris = ({navigation, route}) => {
             justifyContent: 'center',
           }}>
           <Text style={{}}>Favoris </Text>
+          <Text style={{}}>{state}</Text>
         </View>
         <View style={{backgroundColor: 'green', flex: 0.2}}>
           <Button title="Home" onPress={() => navigation.push('Home')} />
           <Button title="getdata" onPress={getData} />
-
         </View>
       </View>
     </SafeAreaView>
