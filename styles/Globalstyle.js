@@ -39,6 +39,6 @@ export const GlobalStyles = StyleSheet.create({
   },
   IconHeart: {
     position: 'absolute',
-    left: 270,
+    left: 290,
   },
 });
