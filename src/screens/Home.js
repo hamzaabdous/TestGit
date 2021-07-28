@@ -3,7 +3,7 @@ import {SafeAreaView, Text, View} from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {MyFlatList} from '../../resources/Components/MyFlatList';
 import {Header} from '../../resources/Components/Header';
-export const Home = () => {
+export const Home = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={GlobalStyles.container}>
