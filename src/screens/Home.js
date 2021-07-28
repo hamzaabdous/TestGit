@@ -26,6 +26,9 @@ export const Home = ({navigation}) => {
     );
   };
 
+  const [Id, setId] = useState('');
+  const [Title, setTitle] = useState('');
+
   const [name, setName] = useState('');
   const storeData = async () => {
     try {
@@ -36,10 +39,33 @@ export const Home = ({navigation}) => {
     }
   };
 
-  // methode cherche
+  // methode Add
 
-  const [newdata, setNewData] = useState(Data);
+  function add() {
+    // methode cherche
+    var FOUND = -1;
+    for (var i = 0; i < Data.length; i++) {
+      if (Data[i].id == Id.toString()) {
+        FOUND = i;
+        break;
+      }
+    }
+    if (FOUND == -1) {
+      Data.push({id: Id, title: Title});
+      console.log(Data);
+      return Data;
+    } else {
+      console.log('error');
+    }
+  }
+  // methode delete
 
+  function Supp() {
+    Data.splice(Id - 1, 1);
+
+    console.log(Data);
+    return Data;
+  }
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={GlobalStyles.container}>
@@ -49,16 +75,27 @@ export const Home = ({navigation}) => {
         <View
           style={{
             backgroundColor: 'gold',
-            flex: 0.3,
+            flex: 1,
             alignItems: 'center',
-            justifyContent: 'center',
           }}>
           <Text>hamza</Text>
           <TextInput
             style={GlobalStyles.input}
             onChangeText={setName}
-            placeholder="get number"
+            placeholder="get KeyAsync"
           />
+          <TextInput
+            style={GlobalStyles.input}
+            onChangeText={setId}
+            placeholder="get id"
+          />
+          <TextInput
+            style={GlobalStyles.input}
+            onChangeText={setTitle}
+            placeholder="get Title"
+          />
+          <Button title="Add" onPress={add} />
+          <Button title="Supp" onPress={Supp} />
         </View>
         <View
           style={{
@@ -68,7 +105,7 @@ export const Home = ({navigation}) => {
             justifyContent: 'center',
           }}>
           <FlatList
-            data={newdata}
+            data={Data}
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />

@@ -1,4 +1,4 @@
-export const Data = [
+export var Data = [
   {
     id: '1',
     title: 'CSS',
