@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, Text, View, FlatList} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {MyFlatList} from '../../resources/Components/MyFlatList';
 import {Header} from '../../resources/Components/Header';
