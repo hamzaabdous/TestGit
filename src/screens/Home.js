@@ -11,7 +11,6 @@ export const Home = ({navigation}) => {
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('username', name);
-      navigation.push('Favoris', {keyAsync: 'username'});
     } catch (e) {
       // saving error
       console.log(e);
@@ -49,7 +48,11 @@ export const Home = ({navigation}) => {
         </View>
 
         <View style={{backgroundColor: 'green', flex: 0.3}}>
-          <Button title="Favoris" onPress={storeData} />
+          <Button title="store Data" onPress={storeData} />
+          <Button
+            title="Go to Favoris"
+            onPress={() => navigation.push('Favoris', {keyAsync: 'username'})}
+          />
         </View>
       </View>
     </SafeAreaView>
