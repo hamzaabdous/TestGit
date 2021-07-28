@@ -26,7 +26,7 @@ export const Home = ({navigation}) => {
         <View
           style={{
             backgroundColor: 'gold',
-            flex: 1,
+            flex: 0.3,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
