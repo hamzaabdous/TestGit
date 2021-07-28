@@ -8,6 +8,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {Header} from '../../resources/Components/Header';
+
 import {GlobalStyles} from '../../styles/Globalstyle';
 
 export const Favoris = () => {
@@ -15,7 +17,7 @@ export const Favoris = () => {
     <SafeAreaView style={{flex: 1}}>
       <View style={GlobalStyles.container}>
         <View style={{backgroundColor: 'red', flex: 0.2}}>
-          <Text style={GlobalStyles.title}>header</Text>
+          <Header />
         </View>
         <View
           style={{
