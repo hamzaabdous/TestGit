@@ -1,8 +1,9 @@
 import React from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {SafeAreaView, Text, View, Button} from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {MyFlatList} from '../../resources/Components/MyFlatList';
 import {Header} from '../../resources/Components/Header';
+import {Favoris} from './Favoris';
 export const Home = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -20,7 +21,10 @@ export const Home = ({navigation}) => {
           <MyFlatList />
         </View>
         <View style={{backgroundColor: 'green', flex: 0.2}}>
-          <Text style={GlobalStyles.title}>footer</Text>
+          <Button
+            title="hamza"
+            onPress={() => navigation.navigate('Favoris')}
+          />
         </View>
       </View>
     </SafeAreaView>
