@@ -6,15 +6,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
+const StackNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={Home} />
 
+    <Stack.Screen name="Favoris" component={Favoris} />
+  </Stack.Navigator>
+);
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-
-        <Stack.Screen name="Favoris" component={Favoris} />
-      </Stack.Navigator>
+      <StackNavigator />
     </NavigationContainer>
   );
 };
