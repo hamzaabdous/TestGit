@@ -47,4 +47,14 @@ export const GlobalStyles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
   },
+  FlatList: {
+    margin: 20,
+    height: 80,
+    width: 300,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#F79D84',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

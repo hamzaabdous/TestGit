@@ -1,12 +1,31 @@
 import React, {useState} from 'react';
-import {SafeAreaView, View, Button, Text, TextInput} from 'react-native';
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  View,
+  Button,
+  Text,
+  TextInput,
+  FlatList,
+} from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
-import {MyFlatList} from '../../resources/Components/MyFlatList';
 import {Header} from '../../resources/Components/Header';
-import {Favoris} from './Favoris';
+import {Data} from '../../resources/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Home = ({navigation}) => {
+  const renderItem = ({item}) => {
+    return (
+      <TouchableOpacity>
+        <View style={GlobalStyles.FlatList}>
+          <Text style={{fontSize: 20, alignItems: 'center'}}>
+            {item.id} : {item.title}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   const [name, setName] = useState('');
   const storeData = async () => {
     try {
@@ -16,6 +35,10 @@ export const Home = ({navigation}) => {
       console.log(e);
     }
   };
+
+  // methode cherche
+
+  const [newdata, setNewData] = useState(Data);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -44,7 +67,11 @@ export const Home = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <MyFlatList />
+          <FlatList
+            data={newdata}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
         </View>
 
         <View style={{backgroundColor: 'green', flex: 0.3}}>
