@@ -21,7 +21,7 @@ export const Home = ({navigation}) => {
           <MyFlatList />
         </View>
         <View style={{backgroundColor: 'green', flex: 0.2}}>
-          <Button title="hamza" onPress={() => navigation.push('Favoris')} />
+          <Button title="Favoris" onPress={() => navigation.push('Favoris')} />
         </View>
       </View>
     </SafeAreaView>

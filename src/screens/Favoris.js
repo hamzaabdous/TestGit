@@ -5,6 +5,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  Button,
   useColorScheme,
   View,
 } from 'react-native';
@@ -12,7 +13,7 @@ import {Header} from '../../resources/Components/Header';
 
 import {GlobalStyles} from '../../styles/Globalstyle';
 
-export const Favoris = () => {
+export const Favoris = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={GlobalStyles.container}>
@@ -29,7 +30,7 @@ export const Favoris = () => {
           <Text style={{}}>Favoris </Text>
         </View>
         <View style={{backgroundColor: 'green', flex: 0.2}}>
-          <Text style={GlobalStyles.title}>footer</Text>
+          <Button title="Home" onPress={() => navigation.push('Home')} />
         </View>
       </View>
     </SafeAreaView>
