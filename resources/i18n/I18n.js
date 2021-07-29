@@ -32,6 +32,7 @@ const resources = {
       Add: 'أضف',
       Delete: 'حذف',
       Search: 'بحث',
+      GotoFavoris: ' الذهاب إلى المفضل',
     },
   },
 };

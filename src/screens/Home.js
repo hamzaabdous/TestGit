@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useTranslation} from 'react-i18next';
 
 export const Home = ({navigation}) => {
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
 
   // render item in flatList
   const renderItem = ({item}) => {
@@ -126,11 +126,31 @@ export const Home = ({navigation}) => {
             <Button title={t('Delete')} onPress={Supp} />
             <Button title={t('Search')} onPress={recherche} />
           </View>
+          <View style={{flexDirection: 'row'}}>
+            <Button
+              title="Arabic"
+              onPress={() => {
+                i18n.changeLanguage(i18n.language === 'ar' ? 'ar' : 'ar');
+              }}
+            />
+            <Button
+              title="Frencais"
+              onPress={() => {
+                i18n.changeLanguage(i18n.language === 'fr' ? 'fr' : 'fr');
+              }}
+            />
+            <Button
+              title="English"
+              onPress={() => {
+                i18n.changeLanguage(i18n.language === 'en' ? 'en' : 'en');
+              }}
+            />
+          </View>
         </View>
         <View
           style={{
             backgroundColor: '#fff',
-            flex: 1,
+            flex: 0.7,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
