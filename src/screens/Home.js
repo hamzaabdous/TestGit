@@ -12,8 +12,12 @@ import {GlobalStyles} from '../../styles/Globalstyle';
 import {Header} from '../../resources/Components/Header';
 import {Data} from '../../resources/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useTranslation} from 'react-i18next';
 
 export const Home = ({navigation}) => {
+  const {t} = useTranslation();
+
+  // render item in flatList
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity>
@@ -103,14 +107,14 @@ export const Home = ({navigation}) => {
             onChangeText={setName}
             placeholder="get KeyAsync"
           />
-          <Text>Id :</Text>
+          <Text>{t('Identify')} :</Text>
 
           <TextInput
             style={GlobalStyles.input}
             onChangeText={setId}
             placeholder="get id"
           />
-          <Text>Title :</Text>
+          <Text> {t('Title')} :</Text>
 
           <TextInput
             style={GlobalStyles.input}
@@ -118,9 +122,9 @@ export const Home = ({navigation}) => {
             placeholder="get Title"
           />
           <View style={{flexDirection: 'row'}}>
-            <Button title="Add" onPress={add} />
-            <Button title="remove" onPress={Supp} />
-            <Button title="recherche" onPress={recherche} />
+            <Button title={t('Add')} onPress={add} />
+            <Button title={t('Delete')} onPress={Supp} />
+            <Button title={t('Search')} onPress={recherche} />
           </View>
         </View>
         <View
@@ -140,7 +144,7 @@ export const Home = ({navigation}) => {
         <View style={{backgroundColor: '#ffb3c1', flex: 0.3}}>
           <Button title="store Data" onPress={storeData} />
           <Button
-            title="Go to Favoris"
+            title={t('GotoFavoris')}
             onPress={() => navigation.push('Favoris', {keyAsync: 'username'})}
           />
         </View>
