@@ -7,7 +7,8 @@ import {
   Text,
   TextInput,
   FlatList,
-  ScrollView,StatusBar,
+  ScrollView,
+  StatusBar,
 } from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Header} from '../../resources/Components/Header';
@@ -92,77 +93,76 @@ export const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-    <StatusBar
-          barStyle="dark-content"
-          // dark-content, light-content and default
-          hidden={false}
-          //To hide statusBar
-          backgroundColor="#ff4081"
-          //Background color of statusBar
-          translucent={false}
-          //allowing light, but not detailed shapes
-          networkActivityIndicatorVisible={true}
-        />
+      <StatusBar
+        barStyle="dark-content"
+        // dark-content, light-content and default
+        hidden={false}
+        //To hide statusBar
+        backgroundColor="#ffb3c1"
+        //Background color of statusBar
+        translucent={false}
+        //allowing light, but not detailed shapes
+        networkActivityIndicatorVisible={true}
+      />
       <View style={GlobalStyles.container}>
         <View style={{flex: 0.2}}>
           <Header />
         </View>
         <ScrollView style={{flex: 1}}>
-        <View
-          style={{
-            backgroundColor: '#fff',
-            flex: 1,
-            alignItems: 'center',
-          }}>
-          <Text>KeyAsync</Text>
-          <TextInput
-            style={GlobalStyles.input}
-            onChangeText={setName}
-            placeholder="get KeyAsync"
-          />
-          <Text>{t('Identify')} :</Text>
+          <View
+            style={{
+              backgroundColor: '#fff',
+              flex: 1,
+              alignItems: 'center',
+            }}>
+            <Text>KeyAsync</Text>
+            <TextInput
+              style={GlobalStyles.input}
+              onChangeText={setName}
+              placeholder="get KeyAsync"
+            />
+            <Text>{t('Identify')} :</Text>
 
-          <TextInput
-            style={GlobalStyles.input}
-            onChangeText={setId}
-            placeholder="get id"
-          />
-          <Text> {t('Title')} :</Text>
+            <TextInput
+              style={GlobalStyles.input}
+              onChangeText={setId}
+              placeholder="get id"
+            />
+            <Text> {t('Title')} :</Text>
 
-          <TextInput
-            style={GlobalStyles.input}
-            onChangeText={setTitle}
-            placeholder="get Title"
-          />
-          <View style={{flexDirection: 'row'}}>
-            <Button title={t('Add')} onPress={add} />
-            <Button title={t('Delete')} onPress={Supp} />
-            <Button title={t('Search')} onPress={recherche} />
+            <TextInput
+              style={GlobalStyles.input}
+              onChangeText={setTitle}
+              placeholder="get Title"
+            />
+            <View style={{flexDirection: 'row'}}>
+              <Button title={t('Add')} onPress={add} />
+              <Button title={t('Delete')} onPress={Supp} />
+              <Button title={t('Search')} onPress={recherche} />
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <Button
+                title="Arabic"
+                onPress={() => {
+                  i18n.changeLanguage((i18n.language = 'ar'));
+                }}
+              />
+              <Button
+                title="Francais"
+                onPress={() => {
+                  i18n.changeLanguage((i18n.language = 'fr'));
+                }}
+              />
+              <Button
+                title="English"
+                onPress={() => {
+                  i18n.changeLanguage((i18n.language = 'en'));
+                }}
+              />
+            </View>
           </View>
-          <View style={{flexDirection: 'row'}}>
-            <Button
-              title="Arabic"
-              onPress={() => {
-                i18n.changeLanguage((i18n.language = 'ar'));
-              }}
-            />
-            <Button
-              title="Francais"
-              onPress={() => {
-                i18n.changeLanguage((i18n.language = 'fr'));
-              }}
-            />
-            <Button
-              title="English"
-              onPress={() => {
-                i18n.changeLanguage((i18n.language = 'en'));
-              }}
-            />
-          </View>
-        </View>
         </ScrollView>
 
-        
         <View
           style={{
             backgroundColor: '#fff',
