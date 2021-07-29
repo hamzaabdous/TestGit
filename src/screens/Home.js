@@ -130,19 +130,19 @@ export const Home = ({navigation}) => {
             <Button
               title="Arabic"
               onPress={() => {
-                i18n.changeLanguage(i18n.language === 'ar' ? 'ar' : 'ar');
+                i18n.changeLanguage((i18n.language = 'ar'));
               }}
             />
             <Button
               title="Frencais"
               onPress={() => {
-                i18n.changeLanguage(i18n.language === 'fr' ? 'fr' : 'fr');
+                i18n.changeLanguage((i18n.language = 'fr'));
               }}
             />
             <Button
               title="English"
               onPress={() => {
-                i18n.changeLanguage(i18n.language === 'en' ? 'en' : 'en');
+                i18n.changeLanguage((i18n.language = 'en'));
               }}
             />
           </View>
