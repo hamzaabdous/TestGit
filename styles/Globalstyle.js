@@ -4,7 +4,7 @@ export const GlobalStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#eaeaea',
+    backgroundColor: '#fff',
   },
   title: {
     marginTop: 16,
@@ -24,6 +24,7 @@ export const GlobalStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
   },
   HeaderText: {
     fontWeight: 'bold',

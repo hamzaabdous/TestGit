@@ -33,12 +33,12 @@ export const Favoris = ({navigation, route}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={GlobalStyles.container}>
-        <View style={{backgroundColor: 'red', flex: 0.2}}>
+        <View style={{backgroundColor: '#fff', flex: 0.2}}>
           <Header />
         </View>
         <View
           style={{
-            backgroundColor: 'gold',
+            backgroundColor: '#fff',
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
@@ -46,7 +46,7 @@ export const Favoris = ({navigation, route}) => {
           <Text style={{}}>Favoris </Text>
           <Text style={{}}>{state}</Text>
         </View>
-        <View style={{backgroundColor: 'green', flex: 0.2}}>
+        <View style={{backgroundColor: '#ffb3c1', flex: 0.2}}>
           <Button title="Home" onPress={() => navigation.push('Home')} />
           <Button title="getdata" onPress={getData} />
         </View>

@@ -58,48 +58,74 @@ export const Home = ({navigation}) => {
       console.log('error');
     }
   }
-  // methode delete
+  // methode remove
 
   function Supp() {
-    Data.splice(Id - 1, 1);
+    var FOUND = -1;
+    for (var i = 0; i < Data.length; i++) {
+      if (Data[i].id == Id.toString()) {
+        FOUND = i;
+        break;
+      }
+    }
+    Data.splice(FOUND, 1);
 
     console.log(Data);
     return Data;
   }
+  // methode recherche
+  function recherche() {
+    console.log(Data);
+
+    const Datachercher = Data.find(Data => Data.id === Id);
+
+    Data.length = 0;
+
+    Data.push(Datachercher);
+    console.log(Data);
+  }
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={GlobalStyles.container}>
-        <View style={{backgroundColor: 'red', flex: 0.2}}>
+        <View style={{flex: 0.2}}>
           <Header />
         </View>
         <View
           style={{
-            backgroundColor: 'gold',
+            backgroundColor: '#fff',
             flex: 1,
             alignItems: 'center',
           }}>
-          <Text>hamza</Text>
+          <Text>KeyAsync</Text>
           <TextInput
             style={GlobalStyles.input}
             onChangeText={setName}
             placeholder="get KeyAsync"
           />
+          <Text>Id :</Text>
+
           <TextInput
             style={GlobalStyles.input}
             onChangeText={setId}
             placeholder="get id"
           />
+          <Text>Title :</Text>
+
           <TextInput
             style={GlobalStyles.input}
             onChangeText={setTitle}
             placeholder="get Title"
           />
-          <Button title="Add" onPress={add} />
-          <Button title="Supp" onPress={Supp} />
+          <View style={{flexDirection: 'row'}}>
+            <Button title="Add" onPress={add} />
+            <Button title="remove" onPress={Supp} />
+            <Button title="recherche" onPress={recherche} />
+          </View>
         </View>
         <View
           style={{
-            backgroundColor: 'gold',
+            backgroundColor: '#fff',
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
@@ -111,7 +137,7 @@ export const Home = ({navigation}) => {
           />
         </View>
 
-        <View style={{backgroundColor: 'green', flex: 0.3}}>
+        <View style={{backgroundColor: '#ffb3c1', flex: 0.3}}>
           <Button title="store Data" onPress={storeData} />
           <Button
             title="Go to Favoris"
