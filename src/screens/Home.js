@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   FlatList,
+  ScrollView,StatusBar,
 } from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Header} from '../../resources/Components/Header';
@@ -91,10 +92,22 @@ export const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
+    <StatusBar
+          barStyle="dark-content"
+          // dark-content, light-content and default
+          hidden={false}
+          //To hide statusBar
+          backgroundColor="#ff4081"
+          //Background color of statusBar
+          translucent={false}
+          //allowing light, but not detailed shapes
+          networkActivityIndicatorVisible={true}
+        />
       <View style={GlobalStyles.container}>
         <View style={{flex: 0.2}}>
           <Header />
         </View>
+        <ScrollView style={{flex: 1}}>
         <View
           style={{
             backgroundColor: '#fff',
@@ -147,6 +160,9 @@ export const Home = ({navigation}) => {
             />
           </View>
         </View>
+        </ScrollView>
+
+        
         <View
           style={{
             backgroundColor: '#fff',
