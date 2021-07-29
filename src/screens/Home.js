@@ -134,7 +134,7 @@ export const Home = ({navigation}) => {
               }}
             />
             <Button
-              title="Frencais"
+              title="Francais"
               onPress={() => {
                 i18n.changeLanguage((i18n.language = 'fr'));
               }}
