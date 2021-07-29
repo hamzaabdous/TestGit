@@ -17,7 +17,7 @@ const resources = {
   },
   fr: {
     translation: {
-      Title: 'titre',
+      Title: 'Titre',
       Identify: 'Identifier',
       Add: 'Ajouter',
       Delete: 'Supprime',
