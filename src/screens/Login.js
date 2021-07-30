@@ -1,8 +1,36 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {Text, View, StyleSheet, Pressable, TextInput} from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Home} from './Home';
+import {DataLogin} from '../../resources/DataLogin';
+import {Data} from '../../resources/Data';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export const Login = ({navigation}) => {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  function login() {
+    if (email == null || password == null) {
+      alert('Please enter your info');
+    } else {
+      var checkemail, checkpassword;
+      for (let index = 0; index < DataLogin.length; index++) {
+        if (DataLogin[index].email == email) {
+          checkemail = 1;
+        }
+        if (DataLogin[index].password == password) {
+          checkpassword = 1;
+        }
+      }
+      if (checkpassword == 1 && checkemail == 1) {
+        navigation.push('Home');
+      } else {
+        alert('Please  check ur email or ur password');
+      }
+    }
+  }
+
   return (
     <View style={GlobalStyles.container}>
       <View
@@ -27,10 +55,15 @@ export const Login = ({navigation}) => {
             <TextInput
               style={styles.input}
               placeholder="Enter your Email Address"
+              onChangeText={setEmail}
             />
           </View>
           <View style={{padding: 10}}>
-            <TextInput style={styles.input} placeholder="Enter your Password" />
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your Password"
+              onChangeText={setPassword}
+            />
           </View>
         </View>
         <View style={{flex: 1}}>
@@ -40,14 +73,12 @@ export const Login = ({navigation}) => {
               justifyContent: 'center',
               margin: 60,
             }}>
-            <Pressable style={styles.button} onPress={() => {
-                navigation.push('Home');
-            }}>
+            <Pressable style={styles.button} onPress={login}>
               <Text style={styles.text}>Login</Text>
             </Pressable>
           </View>
           <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Pressable style={styles.button} >
+            <Pressable style={styles.button}>
               <Text style={styles.text}>Sign Up</Text>
             </Pressable>
           </View>
