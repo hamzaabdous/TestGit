@@ -9,13 +9,14 @@ import {
   FlatList,
   ScrollView,
   StatusBar,
+  I18nManager,
 } from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Header} from '../../resources/Components/Header';
 import {Data} from '../../resources/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useTranslation} from 'react-i18next';
-
+import RNRestart from 'react-native-restart';
 export const Home = ({navigation}) => {
   const {t, i18n} = useTranslation();
 
@@ -108,14 +109,14 @@ export const Home = ({navigation}) => {
         <View style={{flex: 0.2}}>
           <Header />
         </View>
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex: 1, display: 'flex'}}>
           <View
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: '#ff7',
               flex: 1,
-              alignItems: 'center',
+              alignItems: 'flex-start',
             }}>
-            <Text>KeyAsync</Text>
+            <Text style={{}}>KeyAsync</Text>
             <TextInput
               style={GlobalStyles.input}
               onChangeText={setName}
@@ -126,14 +127,14 @@ export const Home = ({navigation}) => {
             <TextInput
               style={GlobalStyles.input}
               onChangeText={setId}
-              placeholder="get id"
+              placeholder={t('getid')}
             />
             <Text> {t('Title')} :</Text>
 
             <TextInput
               style={GlobalStyles.input}
               onChangeText={setTitle}
-              placeholder="get Title"
+              placeholder={t('getTitle')}
             />
             <View style={{flexDirection: 'row'}}>
               <Button title={t('Add')} onPress={add} />
@@ -144,19 +145,12 @@ export const Home = ({navigation}) => {
               <Button
                 title="Arabic"
                 onPress={() => {
-                  i18n.changeLanguage((i18n.language = 'ar'));
-                }}
-              />
-              <Button
-                title="Francais"
-                onPress={() => {
-                  i18n.changeLanguage((i18n.language = 'fr'));
-                }}
-              />
-              <Button
-                title="English"
-                onPress={() => {
-                  i18n.changeLanguage((i18n.language = 'en'));
+                  i18n
+                    .changeLanguage(i18n.language === 'ar' ? 'en' : 'ar')
+                    .then(() => {
+                      I18nManager.forceRTL(i18n.language === 'ar');
+                      RNRestart.Restart();
+                    });
                 }}
               />
             </View>

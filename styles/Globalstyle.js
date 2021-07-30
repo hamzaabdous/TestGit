@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet,I18nManager} from 'react-native';
 
 export const GlobalStyles = StyleSheet.create({
   container: {
@@ -47,6 +47,7 @@ export const GlobalStyles = StyleSheet.create({
     width: 200,
     margin: 12,
     borderWidth: 1,
+    textAlign: I18nManager.isRTL ? 'right' : 'left',
   },
   FlatList: {
     margin: 20,
