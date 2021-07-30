@@ -1,4 +1,4 @@
-import {StyleSheet,I18nManager} from 'react-native';
+import {StyleSheet, I18nManager} from 'react-native';
 
 export const GlobalStyles = StyleSheet.create({
   container: {
