@@ -16,6 +16,7 @@ const resources = {
       GotoFavoris: 'Go to Favoris',
       getTitle : 'Get Title',
       getid: 'Get id',
+      storeData: 'Store Data',
       
     },
   },
@@ -39,6 +40,7 @@ const resources = {
       GotoFavoris: ' الذهاب إلى المفضل',
       getTitle: ' اكتب العنوان',
       getid: 'اكتب معرف',
+      storeData: 'إحفظ البيانات',
     },
   },
 };

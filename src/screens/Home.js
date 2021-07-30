@@ -172,7 +172,7 @@ export const Home = ({navigation}) => {
         </View>
 
         <View style={{backgroundColor: '#ffb3c1', flex: 0.3}}>
-          <Button title="store Data" onPress={storeData} />
+          <Button title={t('storeData')} onPress={storeData} />
           <Button
             title={t('GotoFavoris')}
             onPress={() => navigation.push('Favoris', {keyAsync: 'username'})}
