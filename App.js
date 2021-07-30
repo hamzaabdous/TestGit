@@ -8,7 +8,7 @@ import './resources/i18n/I18n';
 const Stack = createStackNavigator();
 const StackNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
 
     <Stack.Screen name="Favoris" component={Favoris} />
   </Stack.Navigator>

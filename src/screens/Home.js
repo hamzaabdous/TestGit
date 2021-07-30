@@ -112,7 +112,7 @@ export const Home = ({navigation}) => {
         <ScrollView style={{flex: 1, display: 'flex'}}>
           <View
             style={{
-              backgroundColor: '#ff7',
+              backgroundColor: '#fff',
               flex: 1,
               alignItems: 'flex-start',
             }}>
