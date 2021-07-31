@@ -10,6 +10,7 @@ import {
   ScrollView,
   StatusBar,
   I18nManager,
+  Modal,
 } from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Login} from './Login';
@@ -36,6 +37,7 @@ export const Home = ({navigation}) => {
 
   const [Id, setId] = useState('');
   const [Title, setTitle] = useState('');
+  const [model, setModel] = useState(null);
 
   const [name, setName] = useState('');
   const storeData = async () => {
@@ -51,19 +53,23 @@ export const Home = ({navigation}) => {
 
   function add() {
     // methode cherche
-    var FOUND = -1;
-    for (var i = 0; i < Data.length; i++) {
-      if (Data[i].id == Id.toString()) {
-        FOUND = i;
-        break;
-      }
-    }
-    if (FOUND == -1) {
-      Data.push({id: Id, title: Title});
-      console.log(Data);
-      return Data;
+    if (Id == '' && Title == '') {
+      alert('Please enter your info');
     } else {
-      console.log('error');
+      var FOUND = -1;
+      for (var i = 0; i < Data.length; i++) {
+        if (Data[i].id == Id.toString()) {
+          FOUND = i;
+          break;
+        }
+      }
+      if (FOUND == -1) {
+        Data.push({id: Id, title: Title});
+        console.log(Data);
+        return Data;
+      } else {
+        console.log('error');
+      }
     }
   }
   // methode remove
@@ -106,11 +112,40 @@ export const Home = ({navigation}) => {
         //allowing light, but not detailed shapes
         networkActivityIndicatorVisible={true}
       />
+      <Modal animationType="slide" visible={model}>
+        <SafeAreaView style={{flex: 1}}>
+          <View style={{flex: 1}}>
+            <View>
+              <TouchableOpacity onPress={() => setModel(false)}>
+                <Text>close</Text>
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <Text>{t('Identify')} :</Text>
+
+              <TextInput
+                style={GlobalStyles.input}
+                onChangeText={setId}
+                placeholder={t('getid')}
+              />
+              <Text> {t('Title')} :</Text>
+
+              <TextInput
+                style={GlobalStyles.input}
+                onChangeText={setTitle}
+                placeholder={t('getTitle')}
+              />
+              <Button title={t('Add')} onPress={add} />
+            </View>
+          </View>
+        </SafeAreaView>
+      </Modal>
       <View style={GlobalStyles.container}>
         <View style={{flex: 0.2}}>
           <Header />
         </View>
-        <ScrollView style={{flex: 1, display: 'flex'}}>
+        <ScrollView style={{flex: 1}}>
           <View
             style={{
               backgroundColor: '#fff',
@@ -123,22 +158,9 @@ export const Home = ({navigation}) => {
               onChangeText={setName}
               placeholder="get KeyAsync"
             />
-            <Text>{t('Identify')} :</Text>
 
-            <TextInput
-              style={GlobalStyles.input}
-              onChangeText={setId}
-              placeholder={t('getid')}
-            />
-            <Text> {t('Title')} :</Text>
-
-            <TextInput
-              style={GlobalStyles.input}
-              onChangeText={setTitle}
-              placeholder={t('getTitle')}
-            />
             <View style={{flexDirection: 'row'}}>
-              <Button title={t('Add')} onPress={add} />
+              <Button title={t('Add')} onPress={() => setModel(true)} />
               <Button title={t('Delete')} onPress={Supp} />
               <Button title={t('Search')} onPress={recherche} />
             </View>
@@ -161,7 +183,7 @@ export const Home = ({navigation}) => {
         <View
           style={{
             backgroundColor: '#fff',
-            flex: 0.7,
+            flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
           }}>

@@ -14,10 +14,9 @@ const resources = {
       Delete: 'Delete',
       Search: 'Search',
       GotoFavoris: 'Go to Favoris',
-      getTitle : 'Get Title',
+      getTitle: 'Get Title',
       getid: 'Get id',
       storeData: 'Store Data',
-      
     },
   },
   fr: {
