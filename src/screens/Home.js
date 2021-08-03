@@ -11,6 +11,7 @@ import {
   StatusBar,
   I18nManager,
   Modal,
+  Alert,
 } from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Login} from './Login';
@@ -37,9 +38,12 @@ export const Home = ({navigation}) => {
 
   const [Id, setId] = useState('');
   const [Title, setTitle] = useState('');
+  const [emptyText, setEmptyText] = useState('');
+
   const [model, setModel] = useState(null);
 
   const [name, setName] = useState('');
+
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('username', name);
@@ -50,6 +54,31 @@ export const Home = ({navigation}) => {
   };
 
   // methode Add
+  function addSave() {
+    // methode cherche
+    if (Id == '' && Title == '') {
+      alert('Please enter your info');
+    } else {
+      var FOUND = -1;
+      for (var i = 0; i < Data.length; i++) {
+        if (Data[i].id == Id.toString()) {
+          FOUND = i;
+          break;
+        }
+      }
+      if (FOUND == -1) {
+        Data.push({id: Id, title: Title});
+        setId('');
+        setTitle('');
+
+        console.log(Data);
+
+        return Data;
+      } else {
+        console.log('error');
+      }
+    }
+  }
 
   function add() {
     // methode cherche
@@ -65,7 +94,17 @@ export const Home = ({navigation}) => {
       }
       if (FOUND == -1) {
         Data.push({id: Id, title: Title});
+
+        Alert.alert('Done', 'add is done');
+
+        setTimeout(() => {
+          // write your functions
+          setModel(false);
+        }, 1500);
+        setId('');
+        setTitle('');
         console.log(Data);
+
         return Data;
       } else {
         console.log('error');
@@ -128,6 +167,7 @@ export const Home = ({navigation}) => {
                 style={GlobalStyles.input}
                 onChangeText={setId}
                 placeholder={t('getid')}
+                value={Id}
               />
               <Text> {t('Title')} :</Text>
 
@@ -135,8 +175,10 @@ export const Home = ({navigation}) => {
                 style={GlobalStyles.input}
                 onChangeText={setTitle}
                 placeholder={t('getTitle')}
+                value={Title}
               />
-              <Button title={t('Add')} onPress={add} />
+              <Button title="Save" onPress={add} />
+              <Button title="Save & New" onPress={addSave} />
             </View>
           </View>
         </SafeAreaView>
