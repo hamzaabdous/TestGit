@@ -18,6 +18,7 @@ import {Login} from './Login';
 import {Header} from '../../resources/Components/Header';
 import {Data} from '../../resources/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import IconZocial from 'react-native-vector-icons/Zocial';
 import {useTranslation} from 'react-i18next';
 import RNRestart from 'react-native-restart';
 export const Home = ({navigation}) => {
@@ -31,6 +32,7 @@ export const Home = ({navigation}) => {
           <Text style={{fontSize: 20, alignItems: 'center'}}>
             {item.id} : {item.title}
           </Text>
+          <IconZocial name="bitcoin" />
         </View>
       </TouchableOpacity>
     );
