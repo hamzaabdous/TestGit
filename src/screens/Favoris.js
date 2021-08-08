@@ -8,6 +8,7 @@ import {
   Button,
   useColorScheme,
   View,
+  ImageBackground,
 } from 'react-native';
 import {Header} from '../../resources/Components/Header';
 
@@ -32,25 +33,24 @@ export const Favoris = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={GlobalStyles.container}>
-        <View style={{backgroundColor: '#fff', flex: 0.2}}>
-          <Header />
-        </View>
+      <ImageBackground
+        style={GlobalStyles.container}
+        source={require('../../assets/Images/IMG_7498.png')}>
+        <View style={{flex: 0.2}} />
         <View
           style={{
-            backgroundColor: '#fff',
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{}}>Favoris </Text>
-          <Text style={{}}>{state}</Text>
+          <Text style={{color: 'white', fontSize: 20}}>Favoris </Text>
+          <Text style={{color: '#f44', fontSize: 20}}>{state}</Text>
         </View>
-        <View style={{backgroundColor: '#ffb3c1', flex: 0.2}}>
+        <View style={{flex: 0.2}}>
           <Button title="Home" onPress={() => navigation.push('Home')} />
           <Button title="getdata" onPress={getData} />
         </View>
-      </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 };

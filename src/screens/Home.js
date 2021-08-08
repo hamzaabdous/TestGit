@@ -27,10 +27,10 @@ export const Home = ({navigation}) => {
   // render item in flatList
   const renderItem = ({item}) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => console.log(item)}>
         <View style={GlobalStyles.FlatList}>
-          <Text style={{fontSize: 20, alignItems: 'center'}}>
-            {item.id} : {item.title}
+          <Text style={{fontSize: 15, alignItems: 'center'}}>
+            {item.id} : Title : {item.title} Tag: {item.tag}
           </Text>
           <IconZocial name="bitcoin" />
         </View>
@@ -40,10 +40,10 @@ export const Home = ({navigation}) => {
 
   const [Id, setId] = useState('');
   const [Title, setTitle] = useState('');
-  const [emptyText, setEmptyText] = useState('');
 
   const [model, setModel] = useState(null);
 
+  const [Datagrp, setDatagrp] = useState(Data);
   const [name, setName] = useState('');
 
   const storeData = async () => {
@@ -58,19 +58,19 @@ export const Home = ({navigation}) => {
   // methode Add
   function addSave() {
     // methode cherche
-    if (Id == '' && Title == '') {
+    if (Id == null && Title === '') {
       alert('Please enter your info');
     } else {
       var FOUND = -1;
       for (var i = 0; i < Data.length; i++) {
-        if (Data[i].id == Id.toString()) {
+        if (Data[i].id === Id) {
           FOUND = i;
           break;
         }
       }
       if (FOUND == -1) {
         Data.push({id: Id, title: Title});
-        setId('');
+        setId(null);
         setTitle('');
 
         console.log(Data);
@@ -84,7 +84,7 @@ export const Home = ({navigation}) => {
 
   function add() {
     // methode cherche
-    if (Id == '' && Title == '') {
+    if (Id == null && Title === '') {
       alert('Please enter your info');
     } else {
       var FOUND = -1;
@@ -186,8 +186,33 @@ export const Home = ({navigation}) => {
         </SafeAreaView>
       </Modal>
       <View style={GlobalStyles.container}>
-        <View style={{flex: 0.2}}>
-          <Header />
+        <View
+          style={{
+            flex: 0.2,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+          }}>
+          <TouchableOpacity onPress={() => setDatagrp(Data)}>
+            <Text>All</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              setDatagrp([...Data.filter(e => e.tag === 'FrontEnd')])
+            }>
+            <Text>Front End</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              setDatagrp([...Data.filter(e => e.tag === 'BackEnd')])
+            }>
+            <Text>Back End</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              setDatagrp([...Data.filter(e => e.tag === 'Mobile')])
+            }>
+            <Text>Mobile</Text>
+          </TouchableOpacity>
         </View>
         <ScrollView style={{flex: 1}}>
           <View
@@ -232,7 +257,7 @@ export const Home = ({navigation}) => {
             justifyContent: 'center',
           }}>
           <FlatList
-            data={Data}
+            data={Datagrp}
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />
