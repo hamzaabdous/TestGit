@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import {GlobalStyles} from '../../styles/Globalstyle';
 import {Login} from './Login';
+import {ApiScreen} from './ApiScreen';
 import {Header} from '../../resources/Components/Header';
 import {Data} from '../../resources/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -263,13 +264,17 @@ export const Home = ({navigation}) => {
           />
         </View>
 
-        <View style={{backgroundColor: '#ffb3c1', flex: 0.4}}>
+        <View style={{flex: 0.5}}>
           <Button title={t('storeData')} onPress={storeData} />
           <Button
             title={t('GotoFavoris')}
             onPress={() => navigation.push('Favoris', {keyAsync: 'username'})}
           />
           <Button title="login" onPress={() => navigation.push('Login')} />
+          <Button
+            title="ApiScreen"
+            onPress={() => navigation.push('ApiScreen')}
+          />
         </View>
       </View>
     </SafeAreaView>

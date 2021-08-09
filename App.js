@@ -4,6 +4,7 @@ import {SafeAreaView, View} from 'react-native';
 import {Home} from './src/screens/Home';
 import {Favoris} from './src/screens/Favoris';
 import {Login} from './src/screens/Login';
+import {ApiScreen} from './src/screens/ApiScreen';
 // navigation
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -16,6 +17,8 @@ const StackNavigator = () => (
     <Stack.Screen name="Login" component={Login} />
 
     <Stack.Screen name="Favoris" component={Favoris} />
+
+    <Stack.Screen name="ApiScreen" component={ApiScreen} />
   </Stack.Navigator>
 );
 const App = () => {
