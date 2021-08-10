@@ -30,7 +30,7 @@ export const Map = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    height: 700,
+    height: 400,
     width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',
