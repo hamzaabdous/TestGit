@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {GlobalStyles} from '../../styles/Globalstyle';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {
   Text,
   View,
@@ -17,12 +17,16 @@ export const Map = ({navigation}) => {
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.map}
         region={{
-          latitude: 34.0242,
+          latitude: 34.0282,
           longitude: -6.8227,
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
-        }}
-      />
+        }}>
+        <Marker
+          coordinate={{latitude: 34.0242, longitude: -6.8227}}
+          image={require('../../assets/Images/icons8-marker-100.png')}
+        />
+      </MapView>
     </View>
   );
 };

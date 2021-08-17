@@ -35,7 +35,7 @@ export const Favoris = ({navigation, route}) => {
     <SafeAreaView style={{flex: 1}}>
       <ImageBackground
         style={GlobalStyles.container}
-        source={require('../../assets/Images/IMG_7498.png')}>
+        source={require('../../assets/Images/Sanstitre.gif')}>
         <View style={{flex: 0.2}} />
         <View
           style={{
